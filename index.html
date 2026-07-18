@@ -1,0 +1,2810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PureFlow - Premium Bottle Advertising Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(31, 41, 135, 0.08);
+            z-index: 1000;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1f2987 0%, #4a7dc4 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1f2987;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a, nav button.nav-link {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        nav a::after, nav button.nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1f2987;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after, nav button.nav-link:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover, nav button.nav-link:hover {
+            color: #1f2987;
+        }
+
+        .cta-btn {
+            background: #1f2987;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: #162053;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(31, 41, 135, 0.15);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content h1 {
+            font-size: 54px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: #1f2987;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #162053;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(31, 41, 135, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1f2987;
+            padding: 16px 40px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            border: 1.5px solid #1f2987;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f8ff;
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 550px;
+            background: linear-gradient(160deg, #eef1f7 0%, #dbe2ee 55%, #c9d3e6 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(31, 41, 135, 0.08);
+        }
+
+        .hero-visual-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-visual-bg svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 40px;
+        }
+
+        .hero-visual video {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 40px;
+        }
+
+        .hero-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.92);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 16px 34px rgba(31, 41, 135, 0.28);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .hero-play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            box-shadow: 0 20px 40px rgba(31, 41, 135, 0.34);
+        }
+
+        .hero-play-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: #1f2987;
+            margin-left: 4px;
+        }
+
+        .hero-bubbles {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-bubble {
+            position: absolute;
+            bottom: -30px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.15));
+            animation: heroBubbleFloat linear infinite;
+        }
+
+        @keyframes heroBubbleFloat {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            85% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-560px) translateX(12px);
+                opacity: 0;
+            }
+        }
+
+        .hero-shine {
+            position: absolute;
+            top: -60%;
+            left: -45%;
+            width: 45%;
+            height: 220%;
+            background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.22) 50%, transparent 65%);
+            transform: rotate(10deg);
+            animation: heroShineSweep 5.5s ease-in-out infinite;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        @keyframes heroShineSweep {
+            0% { left: -45%; }
+            55% { left: 130%; }
+            100% { left: 130%; }
+        }
+
+        .pf-twinkle {
+            animation: pfTwinkle 1.8s ease-in-out infinite;
+        }
+
+        .pf-twinkle:nth-child(2) { animation-delay: 0.4s; }
+        .pf-twinkle:nth-child(3) { animation-delay: 0.9s; }
+        .pf-twinkle:nth-child(4) { animation-delay: 1.3s; }
+
+        @keyframes pfTwinkle {
+            0%, 100% { opacity: 0.15; transform: scale(0.7); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+
+        .hero-counter-badge {
+            position: absolute;
+            right: 18px;
+            bottom: 10px;
+            z-index: 4;
+            background: linear-gradient(135deg, rgba(31, 41, 135, 0.94) 0%, rgba(58, 75, 176, 0.94) 100%);
+            backdrop-filter: blur(6px);
+            border-radius: 14px;
+            padding: 18px 24px;
+            color: white;
+            text-align: right;
+            box-shadow: 0 18px 36px rgba(10, 15, 60, 0.4);
+            max-width: 230px;
+            animation: heroBadgeRise 0.6s ease-out 0.2s both, heroBadgeGlow 3.4s ease-in-out 1s infinite;
+        }
+
+        @keyframes heroBadgeRise {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heroBadgeGlow {
+            0%, 100% { box-shadow: 0 18px 36px rgba(10, 15, 60, 0.4); }
+            50% { box-shadow: 0 18px 44px rgba(74, 125, 196, 0.55); }
+        }
+
+        .hero-counter-icon {
+            width: 34px;
+            height: 34px;
+            margin: 0 0 10px auto;
+            background: rgba(255, 255, 255, 0.16);
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-counter-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .hero-counter-headline {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        .hero-counter-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+        }
+
+        /* STATS SECTION */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            padding: 0;
+            max-width: 1400px;
+            margin: 60px auto;
+            background: linear-gradient(135deg, #1f2987 0%, #2d3e9e 55%, #4a7dc4 100%);
+            border-radius: 20px;
+            box-shadow: 0 30px 70px rgba(31, 41, 135, 0.22);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                               radial-gradient(circle at 85% 80%, rgba(255,255,255,0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 64px 30px;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .stat-icon {
+            width: 22px;
+            height: 22px;
+            margin: 0 auto 16px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .stat-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .stat-number {
+            font-size: 46px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* HOW IT WORKS */
+        .how-it-works {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 44px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: -0.5px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 44px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(31,41,135,0.15), rgba(74,125,196,0.35), rgba(31,41,135,0.15));
+            z-index: 0;
+        }
+
+        .process-card {
+            background: white;
+            padding: 44px 32px 36px;
+            border-radius: 14px;
+            border: 1px solid rgba(31, 41, 135, 0.08);
+            transition: all 0.35s ease;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-card::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -16px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border: 1.5px solid #1f2987;
+            color: #1f2987;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .process-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(31, 41, 135, 0.14);
+            border-color: rgba(31, 41, 135, 0.2);
+        }
+
+        .process-icon {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 22px;
+            background: linear-gradient(135deg, #1f2987 0%, #4a7dc4 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 24px rgba(31, 41, 135, 0.22);
+            transition: transform 0.35s ease;
+        }
+
+        .process-card:hover .process-icon {
+            transform: scale(1.08) rotate(-4deg);
+        }
+
+        .process-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .process-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .process-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* BENEFITS */
+        .benefits {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #f5f8ff 0%, #eef3ff 100%);
+        }
+
+        .benefits-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 14px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: white;
+            box-shadow: 0 12px 30px rgba(31, 41, 135, 0.08);
+            transform: translateX(4px);
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1f2987 0%, #4a7dc4 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 8px 18px rgba(31, 41, 135, 0.2);
+        }
+
+        .benefit-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .benefit-text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .benefit-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .benefits-visual {
+            height: 500px;
+            background: linear-gradient(135deg, #1f2987 0%, #2d3e9e 55%, #4a7dc4 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(31, 41, 135, 0.18);
+            position: relative;
+        }
+
+        .benefits-visual .product-image-wrapper {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            padding: 30px;
+        }
+
+        .benefits-visual .product-image-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+        }
+
+        .benefits-visual .droplet-field {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 18px;
+            padding: 50px;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .benefits-visual .droplet-field svg {
+            width: 100%;
+            height: auto;
+            stroke: rgba(255, 255, 255, 0.55);
+            fill: none;
+            stroke-width: 1.4;
+        }
+
+        .hero-visual .droplet-field {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 16px;
+            padding: 30px;
+            opacity: 0.12;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-visual .droplet-field svg {
+            width: 100%;
+            height: auto;
+            stroke: rgba(255, 255, 255, 0.6);
+            fill: none;
+            stroke-width: 1.4;
+        }
+
+        .benefits-visual .visual-caption {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            color: white;
+            z-index: 3;
+            background: rgba(31, 41, 135, 0.75);
+            padding: 16px 24px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            text-align: right;
+        }
+
+        .benefits-visual .visual-caption strong {
+            display: block;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 4px;
+        }
+
+        .benefits-visual .visual-caption span {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* PARTNERS SHOWCASE */
+        .partners {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .partner-badge {
+            background: #fafbfd;
+            border: 1px solid rgba(31, 41, 135, 0.08);
+            border-radius: 10px;
+            padding: 28px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.2px;
+            color: #8891ab;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-badge span {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+            color: #1f2987;
+        }
+
+        .partner-badge:hover {
+            background: #f5f8ff;
+            border-color: rgba(31, 41, 135, 0.25);
+            box-shadow: 0 16px 32px rgba(31, 41, 135, 0.14);
+            transform: translateY(-6px);
+        }
+
+        /* PRICING */
+        .pricing {
+            padding: 100px 40px;
+            background: #fafbfd;
+        }
+
+        .pricing-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 1px solid rgba(31, 41, 135, 0.08);
+            border-radius: 16px;
+            padding: 56px;
+            transition: all 0.3s ease;
+            position: relative;
+            max-width: 760px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(31, 41, 135, 0.1);
+            text-align: center;
+        }
+
+        .pricing-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .pricing-card > p {
+            font-size: 15px;
+            color: #666;
+            max-width: 480px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        .volume-range {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 0 auto 40px;
+            max-width: 480px;
+        }
+
+        .volume-range .volume-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1f2987;
+            white-space: nowrap;
+        }
+
+        .volume-range .volume-track {
+            flex: 1;
+            height: 6px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #1f2987 0%, #4a7dc4 100%);
+            position: relative;
+        }
+
+        .volume-range .volume-track::before,
+        .volume-range .volume-track::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            border: 2.5px solid #1f2987;
+            transform: translateY(-50%);
+        }
+
+        .volume-range .volume-track::before { left: -2px; }
+        .volume-range .volume-track::after { right: -2px; }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 24px;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(31, 41, 135, 0.06);
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: #1f2987;
+            font-weight: 700;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #1f2987 0%, #2d3e9e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .cta-btn-white {
+            background: white;
+            color: #1f2987;
+            padding: 16px 40px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .cta-btn-white:hover {
+            background: #f5f8ff;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 40px 20px;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-col a, .footer-col button.footer-link {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 8px;
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .footer-col a:hover, .footer-col button.footer-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+        }
+
+        /* ===================== LEAD FORM MODAL ===================== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 24, 63, 0.55);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 640px;
+            max-height: 88vh;
+            overflow-y: auto;
+            border-radius: 18px;
+            box-shadow: 0 40px 90px rgba(31, 41, 135, 0.35);
+            position: relative;
+            transform: translateY(16px) scale(0.98);
+            transition: transform 0.25s ease;
+        }
+
+        .modal-overlay.open .modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1f2987 0%, #2d3e9e 55%, #4a7dc4 100%);
+            padding: 36px 40px;
+            border-radius: 18px 18px 0 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 85% 20%, rgba(255,255,255,0.12) 0%, transparent 45%);
+            pointer-events: none;
+        }
+
+        .modal-header-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.16);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .modal-header-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .modal-header h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .modal-header p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+            border: none;
+            color: white;
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+            z-index: 2;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-body {
+            padding: 32px 40px 40px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 20px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-field label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .form-field label .req {
+            color: #4a7dc4;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            font-family: inherit;
+            font-size: 14px;
+            color: #1a1a1a;
+            padding: 12px 14px;
+            border: 1.5px solid rgba(31, 41, 135, 0.12);
+            border-radius: 8px;
+            background: #fafbfd;
+            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            outline: none;
+            width: 100%;
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 90px;
+            line-height: 1.5;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: #1f2987;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(31, 41, 135, 0.08);
+        }
+
+        .form-field input::placeholder,
+        .form-field textarea::placeholder {
+            color: #a8adc2;
+        }
+
+        .form-field select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f2987' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 36px;
+        }
+
+        .field-error {
+            font-size: 12px;
+            color: #d64545;
+            min-height: 14px;
+        }
+
+        .modal-submit-row {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-submit-btn {
+            width: 100%;
+            background: #1f2987;
+            color: white;
+            padding: 15px 24px;
+            border-radius: 8px;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .modal-submit-btn:hover {
+            background: #162053;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 26px rgba(31, 41, 135, 0.22);
+        }
+
+        .modal-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .modal-fineprint {
+            font-size: 12px;
+            color: #8891ab;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* success state */
+        .modal-success {
+            display: none;
+            padding: 56px 40px 48px;
+            text-align: center;
+        }
+
+        .modal-success.open {
+            display: block;
+        }
+
+        .modal-success-icon {
+            width: 66px;
+            height: 66px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1f2987 0%, #4a7dc4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 26px rgba(31, 41, 135, 0.25);
+        }
+
+        .modal-success-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .modal-success h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .modal-success p {
+            font-size: 14px;
+            color: #666;
+            max-width: 380px;
+            margin: 0 auto 28px;
+            line-height: 1.7;
+        }
+
+        .modal-body.hidden {
+            display: none;
+        }
+
+        @media (max-width: 640px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-header, .modal-body {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 60px 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .pricing-card {
+                padding: 40px 28px;
+            }
+
+            .pricing-features {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 40px 20px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 32px;
+            }
+        }
+
+        /* ===================== INFO MODAL (About/Blog/Press/Support/etc) ===================== */
+        .info-modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 820px;
+            max-height: 88vh;
+            overflow-y: auto;
+            border-radius: 18px;
+            box-shadow: 0 40px 90px rgba(31, 41, 135, 0.35);
+            position: relative;
+            transform: translateY(16px) scale(0.98);
+            transition: transform 0.25s ease;
+        }
+
+        .modal-overlay.open .info-modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .info-modal-header {
+            background: linear-gradient(135deg, #1f2987 0%, #2d3e9e 55%, #4a7dc4 100%);
+            padding: 40px 44px;
+            border-radius: 18px 18px 0 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-modal-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 85% 20%, rgba(255,255,255,0.12) 0%, transparent 45%);
+            pointer-events: none;
+        }
+
+        .info-modal-eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 10px;
+        }
+
+        .info-modal-header h2 {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .info-modal-header p {
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.7;
+            max-width: 560px;
+        }
+
+        .info-modal-body {
+            padding: 40px 44px 48px;
+            color: #333;
+        }
+
+        .info-modal-body h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 32px 0 14px;
+            letter-spacing: -0.2px;
+        }
+
+        .info-modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .info-modal-body p {
+            font-size: 14.5px;
+            color: #555;
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+
+        .info-modal-body ul, .info-modal-body ol {
+            margin: 0 0 18px 20px;
+            color: #555;
+            font-size: 14.5px;
+            line-height: 1.85;
+        }
+
+        .info-modal-body li {
+            margin-bottom: 8px;
+        }
+
+        .info-modal-body strong {
+            color: #1a1a1a;
+        }
+
+        .info-divider {
+            height: 1px;
+            background: rgba(31, 41, 135, 0.1);
+            margin: 32px 0;
+        }
+
+        /* Stat pills used in About Us */
+        .info-stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0 8px;
+        }
+
+        .info-stat-pill {
+            background: #f5f8ff;
+            border: 1px solid rgba(31, 41, 135, 0.08);
+            border-radius: 12px;
+            padding: 18px 16px;
+            text-align: center;
+        }
+
+        .info-stat-pill strong {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2987;
+            margin-bottom: 4px;
+        }
+
+        .info-stat-pill span {
+            font-size: 11.5px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Timeline used in About Us */
+        .info-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 20px 0 8px;
+        }
+
+        .info-timeline-item {
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .info-timeline-year {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1f2987;
+            padding-top: 2px;
+        }
+
+        .info-timeline-text strong {
+            display: block;
+            font-size: 14.5px;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+        }
+
+        .info-timeline-text p {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        /* Blog list */
+        .blog-post-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .blog-post-item {
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(31, 41, 135, 0.08);
+        }
+
+        .blog-post-item:first-child {
+            padding-top: 0;
+        }
+
+        .blog-post-item:last-child {
+            border-bottom: none;
+        }
+
+        .blog-post-meta {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #4a7dc4;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .blog-post-meta .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #b7c1de;
+        }
+
+        .blog-post-meta .blog-date {
+            color: #8891ab;
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .blog-post-item h4 {
+            font-size: 16.5px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .blog-post-item p {
+            margin-bottom: 0;
+        }
+
+        /* Press releases */
+        .press-release-item {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(31, 41, 135, 0.08);
+        }
+
+        .press-release-item:last-child {
+            border-bottom: none;
+        }
+
+        .press-release-date {
+            font-size: 12px;
+            font-weight: 700;
+            color: #8891ab;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .press-release-item h4 {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .press-release-item p {
+            margin-bottom: 0;
+        }
+
+        .info-contact-box {
+            background: #f5f8ff;
+            border: 1px solid rgba(31, 41, 135, 0.1);
+            border-radius: 12px;
+            padding: 20px 22px;
+            margin-top: 8px;
+        }
+
+        .info-contact-box strong {
+            display: block;
+            font-size: 14px;
+            color: #1f2987;
+            margin-bottom: 4px;
+        }
+
+        .info-contact-box span {
+            font-size: 13.5px;
+            color: #555;
+        }
+
+        /* FAQ accordion for Support */
+        .faq-item {
+            border-bottom: 1px solid rgba(31, 41, 135, 0.08);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 18px 0;
+            font-family: inherit;
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #1a1a1a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .faq-question .faq-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #f5f8ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1f2987;
+            font-size: 14px;
+            font-weight: 700;
+            transition: transform 0.25s ease;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+        }
+
+        .faq-answer p {
+            padding-bottom: 18px;
+            margin-bottom: 0;
+        }
+
+        /* Community pillars */
+        .community-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 20px 0 8px;
+        }
+
+        .community-card {
+            background: #fafbfd;
+            border: 1px solid rgba(31, 41, 135, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .community-card h4 {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .community-card p {
+            font-size: 13.5px;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 640px) {
+            .info-modal-header, .info-modal-body {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+            .info-stat-row {
+                grid-template-columns: 1fr;
+            }
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo-section">
+            <div class="logo">💧</div>
+            <div class="brand-name">PureFlow</div>
+        </div>
+        <nav>
+            <button type="button" class="nav-link" data-target="how">How It Works</button>
+            <button type="button" class="nav-link" data-target="benefits">Benefits</button>
+            <button type="button" class="nav-link" data-target="pricing">Pricing</button>
+            <button type="button" class="nav-link" data-target="contact">Contact</button>
+            <button type="button" class="cta-btn" data-open-modal data-source="Get Started">Get Started</button>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Bottle Into a Marketing Platform</h1>
+            <p>Reach millions of consumers with your brand message. Partner with PureFlow to advertise on premium water bottles distributed through our network. Drive brand awareness and generate revenue from every bottle sold.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" data-open-modal data-source="Partner With Us">Partner With Us</button>
+                <button class="btn-secondary">View Demo</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-visual-bg">
+                <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="heroDeepGlow" cx="50%" cy="38%" r="65%">
+                            <stop offset="0%" stop-color="#eaf1ff"/>
+                            <stop offset="35%" stop-color="#9db6e6"/>
+                            <stop offset="70%" stop-color="#3448a8"/>
+                            <stop offset="100%" stop-color="#131c6e"/>
+                        </radialGradient>
+                        <linearGradient id="floorGradDeep" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#0e1550" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="#0e1550" stop-opacity="0.55"/>
+                        </linearGradient>
+                        <linearGradient id="bottleBody" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+                            <stop offset="18%" stop-color="#eaf1fb" stop-opacity="0.9"/>
+                            <stop offset="45%" stop-color="#ffffff" stop-opacity="0.6"/>
+                            <stop offset="70%" stop-color="#dbe6f6" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#c9d8ee" stop-opacity="0.65"/>
+                        </linearGradient>
+                        <linearGradient id="capGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#3a4bb0"/>
+                            <stop offset="100%" stop-color="#1f2987"/>
+                        </linearGradient>
+                        <linearGradient id="ribbonGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#3d57c9"/>
+                            <stop offset="100%" stop-color="#161f6e"/>
+                        </linearGradient>
+                        <symbol id="pfBottleHero" viewBox="-40 0 80 300">
+                            <ellipse cx="0" cy="296" rx="30" ry="6" fill="#050b3a" opacity="0.25"/>
+                            <path d="M -13,0 H 13 V 20 H -13 Z" fill="url(#capGrad)"/>
+                            <rect x="-13" y="18" width="26" height="5" rx="1.5" fill="#162053"/>
+                            <path d="M -9,23 H 9 L 9,34 Q 9,40 15,44 L 22,52 Q 30,62 30,76 L 30,262 Q 30,282 10,286 L -10,286 Q -30,282 -30,262 L -30,76 Q -30,62 -22,52 L -15,44 Q -9,40 -9,34 Z"
+                                  fill="url(#bottleBody)" stroke="#e7edfa" stroke-width="1.5"/>
+                            <path d="M -22,90 Q -26,175 -22,255" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+                            <path d="M -30,110 Q 0,116 30,110" fill="none" stroke="#b9c8e4" stroke-width="1.2" opacity="0.6"/>
+                            <path d="M -30,225 Q 0,231 30,225" fill="none" stroke="#b9c8e4" stroke-width="1.2" opacity="0.6"/>
+                            <rect x="-26" y="128" width="52" height="60" rx="4" fill="#ffffff" stroke="#dbe2ee" stroke-width="1"/>
+                            <path d="M -19,145 Q -10,138 0,145 T 19,145" fill="none" stroke="#4a7dc4" stroke-width="2.2" stroke-linecap="round"/>
+                            <path d="M -19,151 Q -10,144 0,151 T 19,151" fill="none" stroke="#1f2987" stroke-width="2.2" stroke-linecap="round"/>
+                            <text x="0" y="167" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="9.5" font-weight="700" fill="#1f2987">PureFlow</text>
+                            <text x="0" y="176" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="4" letter-spacing="0.5" fill="#8891ab">PREMIUM DRINKING WATER</text>
+                            <text x="0" y="184" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="4.5" fill="#8891ab">500 ml</text>
+                            <circle cx="-14" cy="70" r="1.6" fill="#ffffff" opacity="0.8"/>
+                            <circle cx="10" cy="95" r="1.2" fill="#ffffff" opacity="0.6"/>
+                            <circle cx="-8" cy="205" r="1.4" fill="#ffffff" opacity="0.7"/>
+                            <circle cx="15" cy="240" r="1.1" fill="#ffffff" opacity="0.6"/>
+                        </symbol>
+                    </defs>
+
+                    <rect x="0" y="0" width="900" height="560" rx="16" fill="url(#heroDeepGlow)"/>
+
+                    <!-- converging light rays behind the bottle -->
+                    <g opacity="0.20" fill="#ffffff">
+                        <polygon points="450,-40 380,560 420,560"/>
+                        <polygon points="450,-40 470,560 520,560"/>
+                        <polygon points="450,-40 300,560 350,560"/>
+                        <polygon points="450,-40 540,560 600,560"/>
+                    </g>
+
+                    <text x="46" y="330" font-family="-apple-system,Segoe UI,sans-serif" font-size="42" font-weight="700" fill="#ffffff">PureFlow</text>
+                    <path d="M46 300 Q68 290 90 300 T134 300" fill="none" stroke="#a9c1ef" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+                    <text x="46" y="356" font-family="-apple-system,Segoe UI,sans-serif" font-size="15" font-weight="600" fill="#c7d5f5">Pure Hydration. Pure Refreshment.</text>
+
+                    <use href="#pfBottleHero" x="450" y="118" width="130" height="360" transform="translate(-65,0)"/>
+
+                    <!-- ribbon banner -->
+                    <g transform="translate(560,230)">
+                        <path d="M0,0 L300,-26 L300,54 L0,80 L34,40 Z" fill="url(#ribbonGrad)"/>
+                        <path d="M0,0 L34,40 L0,80 L-14,40 Z" fill="#101653"/>
+                        <text x="30" y="24" font-family="-apple-system,Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="0.5">ADVERTISE</text>
+                        <text x="30" y="50" font-family="-apple-system,Segoe UI,sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="0.5">HERE</text>
+                        <circle class="pf-twinkle" cx="250" cy="-10" r="3" fill="#ffffff"/>
+                        <circle class="pf-twinkle" cx="270" cy="10" r="2" fill="#ffffff"/>
+                        <circle class="pf-twinkle" cx="230" cy="30" r="2.4" fill="#ffffff"/>
+                        <circle class="pf-twinkle" cx="285" cy="45" r="1.8" fill="#ffffff"/>
+                    </g>
+
+                    <rect x="0" y="470" width="900" height="90" fill="url(#floorGradDeep)"/>
+                </svg>
+            </div>
+
+            <div class="droplet-field" id="heroDropletField"></div>
+            <div class="hero-bubbles" id="heroBubbles"></div>
+            <div class="hero-shine"></div>
+
+            <div class="hero-counter-badge" id="heroCounterBadge">
+                <div class="hero-counter-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+                </div>
+                <div class="hero-counter-headline">10M+ Bottles</div>
+                <div class="hero-counter-label">Distributed Annually</div>
+            </div>
+
+            <video autoplay muted loop playsinline id="heroVideo">
+    <source src="My_Video.mp4" type="video/mp4">
+</video>
+            <button type="button" class="hero-play-btn" id="heroPlayBtn" aria-label="Play brand video">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+        </div>
+    </section>
+
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 1 1-12 0c0-3.5 3-7 6-11z"/></svg></div>
+            <div class="stat-number">10M+</div>
+            <div class="stat-label">Bottles Distributed</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M2.5 20c0-4 3-6.5 6.5-6.5s6.5 2.5 6.5 6.5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.4 13.6c2.7.4 5 2.5 5 6.4"/></svg></div>
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Partner Brands</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+            <div class="stat-number">45%</div>
+            <div class="stat-label">Average ROI Increase</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12.5l2 2 4-5"/></svg></div>
+            <div class="stat-number">92%</div>
+            <div class="stat-label">Brand Recall Rate</div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how">
+        <h2 class="section-title">How It Works</h2>
+        <div class="process-grid">
+            <div class="process-card" data-step="1">
+                <div class="process-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+                <h3>Choose Your Package</h3>
+                <p>Select your campaign size from 1,000 to 1M+ bottles and set your target demographics.</p>
+            </div>
+            <div class="process-card" data-step="2">
+                <div class="process-icon"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+                <h3>Design Your Label</h3>
+                <p>Work with our design team to create stunning promotional labels that stand out.</p>
+            </div>
+            <div class="process-card" data-step="3">
+                <div class="process-icon"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
+                <h3>Production & Distribution</h3>
+                <p>We handle manufacturing, quality control, and distribution to major retailers.</p>
+            </div>
+            <div class="process-card" data-step="4">
+                <div class="process-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+                <h3>Track & Optimize</h3>
+                <p>Monitor real-time performance metrics and campaign effectiveness with our analytics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="benefits" id="benefits">
+        <div class="benefits-content">
+            <div class="benefits-list">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">Why Choose PureFlow</h2>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+                    <div class="benefit-text">
+                        <h3>Massive Reach</h3>
+                        <p>10+ million bottles distributed annually across premium retail locations and corporate events.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-4 3-6.5 6.5-6.5s6.5 2.5 6.5 6.5"/><circle cx="17.5" cy="9" r="2.6"/><path d="M15.7 13.6c2.9.4 5.3 2.6 5.3 6.4"/></svg></div>
+                    <div class="benefit-text">
+                        <h3>Targeted Demographics</h3>
+                        <p>Reach specific age groups, locations, and consumer segments with precision targeting.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M6 3h12l-1.5 8L12 21 7.5 11 6 3z"/><path d="M6 3l6 8 6-8"/></svg></div>
+                    <div class="benefit-text">
+                        <h3>Premium Positioning</h3>
+                        <p>Associate your brand with high-quality, eco-friendly products and health-conscious consumers.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10M12 20V4M18 20v-7"/></svg></div>
+                    <div class="benefit-text">
+                        <h3>Measurable Results</h3>
+                        <p>Track engagement, QR code scans, and conversion metrics with advanced analytics dashboard.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+                    <div class="benefit-text">
+                        <h3>Quick Turnaround</h3>
+                        <p>From campaign approval to distribution in 4-6 weeks. Fast, efficient, reliable.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M12 3C7 6 4 10 4 14a8 8 0 0 0 16 0c0-4-3-8-8-11z"/><path d="M12 21V11"/></svg></div>
+                    <div class="benefit-text">
+                        <h3>Sustainable Marketing</h3>
+                        <p>Eco-friendly PET bottles with digital integration. Show your commitment to sustainability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits-visual">
+                <div class="droplet-field" id="dropletField"></div>
+                <div class="product-image-wrapper">
+    <img src="product.png" 
+         alt="PureFlow Premium Water Bottle" 
+         style="max-width: 100%; max-height: 100%; border-radius: 12px; object-fit: contain;">
+</div>
+                <div class="visual-caption">
+                    <div>
+                        <strong>Built to Scale</strong>
+                        <span>With You — 1K to 1M+ Bottles</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section class="partners" id="partners">
+        <h2 class="section-title">Trusted by Leading Brands</h2>
+        <div class="partners-grid">
+            <div class="partner-badge"><span>Bisleri</span></div>
+            <div class="partner-badge"><span>Aquafina</span></div>
+            <div class="partner-badge"><span>Kinley</span></div>
+            <div class="partner-badge"><span>Sprite</span></div>
+            <div class="partner-badge"><span>Coca-Cola</span></div>
+            <div class="partner-badge"><span>AquaVista</span></div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-content">
+            <h2 class="section-title">Flexible, Custom Pricing</h2>
+            <div class="pricing-card">
+                <h3>Every Campaign, Custom Quoted</h3>
+                <p>From a focused regional run to a nationwide rollout, pricing is tailored to your volume, design complexity, and distribution footprint.</p>
+
+                <div class="volume-range">
+                    <span class="volume-label">1,000</span>
+                    <div class="volume-track"></div>
+                    <span class="volume-label">1M+ bottles</span>
+                </div>
+
+                <ul class="pricing-features">
+                    <li>Any volume, 1,000 to 1M+ bottles</li>
+                    <li>Dedicated account manager</li>
+                    <li>Custom label design service</li>
+                    <li>Regional to global distribution</li>
+                    <li>Real-time analytics dashboard</li>
+                    <li>QR code & digital integration</li>
+                    <li>Multi-brand campaign support</li>
+                    <li>Priority production scheduling</li>
+                </ul>
+
+                <button class="btn-primary" style="width: 100%; max-width: 340px;" data-open-modal data-source="Request a Custom Quote">Request a Custom Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="cta-section-content">
+            <h2>Ready to Reach Millions?</h2>
+            <p>Join hundreds of brands transforming everyday hydration into powerful marketing. Let's create your next campaign.</p>
+            <button class="cta-btn-white" data-open-modal data-source="Schedule a Demo">Schedule a Demo</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Company</h4>
+                <button type="button" class="footer-link" data-target="how">How It Works</button>
+                <button type="button" class="footer-link" data-info-page="about">About Us</button>
+                <button type="button" class="footer-link" data-info-page="blog">Blog</button>
+                <button type="button" class="footer-link" data-info-page="press">Press</button>
+                <button type="button" class="footer-link" data-target="contact">Contact</button>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <button type="button" class="footer-link" data-info-page="support">Support</button>
+                <button type="button" class="footer-link" data-info-page="community">Community</button>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <button type="button" class="footer-link" data-info-page="privacy">Privacy</button>
+                <button type="button" class="footer-link" data-info-page="terms">Terms</button>
+                <button type="button" class="footer-link" data-info-page="cookies">Cookie Policy</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PureFlow. All rights reserved. | Premium Advertising On Every Bottle.</p>
+            <div style="display: flex; gap: 16px;">
+                <button type="button" class="footer-link" style="color: #666; margin-bottom:0;">LinkedIn</button>
+                <button type="button" class="footer-link" style="color: #666; margin-bottom:0;">Twitter</button>
+                <button type="button" class="footer-link" style="color: #666; margin-bottom:0;">Instagram</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== LEAD FORM MODAL ===================== -->
+    <div class="modal-overlay" id="leadModal">
+        <div class="modal-card">
+            <button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+
+            <div class="modal-header">
+                <div class="modal-header-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 1 1-12 0c0-3.5 3-7 6-11z"/></svg>
+                </div>
+                <h2 id="modalTitle">Let's Talk About Your Campaign</h2>
+                <p>Tell us a bit about your brand and goals — our team will get back to you within 1 business day with a tailored plan.</p>
+            </div>
+
+            <div class="modal-body" id="modalBody">
+                <form id="leadForm" novalidate>
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="fullName">Full Name <span class="req">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required>
+                            <div class="field-error" id="err-fullName"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="email">Email Address <span class="req">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+                            <div class="field-error" id="err-email"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="designation">Your Role / Designation <span class="req">*</span></label>
+                            <input type="text" id="designation" name="designation" placeholder="Marketing Manager" required>
+                            <div class="field-error" id="err-designation"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="companyName">Company / Organization <span class="req">*</span></label>
+                            <input type="text" id="companyName" name="companyName" placeholder="Acme Beverages Pvt. Ltd." required>
+                            <div class="field-error" id="err-companyName"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="orgSize">Organization Size <span class="req">*</span></label>
+                            <select id="orgSize" name="orgSize" required>
+                                <option value="" disabled selected>Select employee range</option>
+                                <option value="1-10">1 - 10 employees (Startup)</option>
+                                <option value="11-50">11 - 50 employees (Small)</option>
+                                <option value="51-250">51 - 250 employees (Medium)</option>
+                                <option value="251-1000">251 - 1,000 employees (Large)</option>
+                                <option value="1000+">1,000+ employees (Enterprise)</option>
+                            </select>
+                            <div class="field-error" id="err-orgSize"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="quantity">Bottle Quantity Needed <span class="req">*</span></label>
+                            <select id="quantity" name="quantity" required>
+                                <option value="" disabled selected>Select quantity range</option>
+                                <option value="1000-5000">1,000 - 5,000 bottles</option>
+                                <option value="5000-25000">5,000 - 25,000 bottles</option>
+                                <option value="25000-100000">25,000 - 100,000 bottles</option>
+                                <option value="100000-500000">100,000 - 500,000 bottles</option>
+                                <option value="500000+">500,000+ bottles</option>
+                            </select>
+                            <div class="field-error" id="err-quantity"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="location">Office / Target Market Location <span class="req">*</span></label>
+                            <input type="text" id="location" name="location" placeholder="e.g. Guwahati, Assam or Pan-India" required>
+                            <div class="field-error" id="err-location"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+                            <div class="field-error" id="err-phone"></div>
+                        </div>
+
+                        <div class="form-field full">
+                            <label for="campaignDescription">Tell Us About Your Campaign / Promotion <span class="req">*</span></label>
+                            <textarea id="campaignDescription" name="campaignDescription" placeholder="What's the goal of your campaign? Product launch, brand awareness, event sponsorship, target audience, timeline, etc." required></textarea>
+                            <div class="field-error" id="err-campaignDescription"></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-submit-row">
+                        <button type="submit" class="modal-submit-btn" id="modalSubmitBtn">
+                            <span id="submitBtnText">Submit Request</span>
+                        </button>
+                        <p class="modal-fineprint">By submitting, you agree to be contacted by PureFlow regarding your campaign. We never share your details with third parties.</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-success" id="modalSuccess">
+                <div class="modal-success-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h3>Thanks — We've Got It!</h3>
+                <p>Your campaign details have been received. A PureFlow account manager will reach out to you shortly to discuss next steps.</p>
+                <button type="button" class="btn-secondary" id="modalDoneBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== INFO MODAL (About/Blog/Press/Support/Community/Legal) ===================== -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="info-modal-card">
+            <button type="button" class="modal-close" id="infoModalClose" aria-label="Close">&times;</button>
+            <div class="info-modal-header">
+                <div class="info-modal-eyebrow" id="infoEyebrow">PureFlow</div>
+                <h2 id="infoTitle">Title</h2>
+                <p id="infoSubtitle">Subtitle</p>
+            </div>
+            <div class="info-modal-body" id="infoBody">
+                <!-- injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Nav and footer items are plain buttons (no href), so clicks are
+        // handled entirely in JS with scrollIntoView. This avoids the
+        // preview sandbox's link-interception behavior that opens <a href>
+        // clicks in a new tab/popup instead of scrolling the page.
+        document.querySelectorAll('.nav-link[data-target], .footer-link[data-target], .cta-btn[data-target]').forEach(el => {
+            el.addEventListener('click', function() {
+                const target = document.getElementById(this.getAttribute('data-target'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Load the hero image from uploaded files (you'll need to update the path)
+        // For now, using a placeholder
+        
+        const heroImage = document.getElementById('heroImage');
+        // This will be replaced with your actual image path
+
+        // Populate the benefits panel with a subtle droplet pattern
+        const dropletField = document.getElementById('dropletField');
+        const dropletSVG = '<svg viewBox="0 0 24 30"><path d="M12 2c4 5 8 10 8 15a8 8 0 1 1-16 0c0-5 4-10 8-15z"/></svg>';
+        if (dropletField) {
+            for (let i = 0; i < 18; i++) {
+                const wrap = document.createElement('div');
+                wrap.style.opacity = 0.25 + Math.random() * 0.6;
+                wrap.style.transform = `scale(${0.7 + Math.random() * 0.5})`;
+                wrap.innerHTML = dropletSVG;
+                dropletField.appendChild(wrap);
+            }
+        }
+
+        // Give the hero video panel the same droplet texture as the benefits image
+        const heroDropletField = document.getElementById('heroDropletField');
+        if (heroDropletField) {
+            for (let i = 0; i < 24; i++) {
+                const wrap = document.createElement('div');
+                wrap.style.opacity = 0.2 + Math.random() * 0.6;
+                wrap.style.transform = `scale(${0.6 + Math.random() * 0.5})`;
+                wrap.innerHTML = dropletSVG;
+                heroDropletField.appendChild(wrap);
+            }
+        }
+        
+        // Smooth scroll behavior is already in CSS
+        
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-in forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.process-card, .benefit-item, .pricing-card, .partner-badge').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Hero visual: if a real video file loads and starts playing, fade out
+        // the illustrated background/play button so the actual video takes over.
+        // Until then (e.g. the placeholder D:\ path, which won't resolve in a
+        // browser), the animated bottle scene stays visible as the hero graphic.
+        const heroVideo = document.getElementById('heroVideo');
+        const heroBg = document.querySelector('.hero-visual-bg');
+        const heroPlayBtn = document.getElementById('heroPlayBtn');
+        const heroBubbles = document.getElementById('heroBubbles');
+
+        if (heroVideo) {
+            heroVideo.addEventListener('playing', function() {
+                if (heroBg) heroBg.style.opacity = '0';
+                if (heroPlayBtn) heroPlayBtn.style.display = 'none';
+            });
+            heroVideo.addEventListener('error', function() {
+                if (heroBg) heroBg.style.opacity = '1';
+            });
+        }
+
+        if (heroPlayBtn) {
+            heroPlayBtn.addEventListener('click', function() {
+                if (heroVideo) {
+                    heroVideo.play().catch(() => {
+                        // No valid video source available — illustration stays as-is.
+                    });
+                }
+            });
+        }
+
+        // Generate gently rising bubbles across the hero visual for a "video-like" feel
+        if (heroBubbles) {
+            const bubbleCount = 22;
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'hero-bubble';
+                const size = 4 + Math.random() * 10;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.left = (Math.random() * 100) + '%';
+                bubble.style.animationDuration = (5 + Math.random() * 7) + 's';
+                bubble.style.animationDelay = (Math.random() * 8) + 's';
+                heroBubbles.appendChild(bubble);
+            }
+        }
+
+        /* ===================== LEAD FORM MODAL LOGIC ===================== */
+        const leadModal = document.getElementById('leadModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalClose = document.getElementById('modalClose');
+        const modalBody = document.getElementById('modalBody');
+        const modalSuccess = document.getElementById('modalSuccess');
+        const leadForm = document.getElementById('leadForm');
+        const modalDoneBtn = document.getElementById('modalDoneBtn');
+        const modalSubmitBtn = document.getElementById('modalSubmitBtn');
+        const submitBtnText = document.getElementById('submitBtnText');
+
+        let lastFocusedElement = null;
+
+        function openModal(sourceLabel) {
+            lastFocusedElement = document.activeElement;
+
+            // Personalize the modal title slightly based on which button opened it
+            if (sourceLabel === 'Schedule a Demo') {
+                modalTitle.textContent = 'Schedule Your Free Demo';
+            } else if (sourceLabel === 'Request a Custom Quote') {
+                modalTitle.textContent = 'Request Your Custom Quote';
+            } else {
+                modalTitle.textContent = "Let's Talk About Your Campaign";
+            }
+
+            // Reset to form view every time it's opened
+            modalBody.classList.remove('hidden');
+            modalSuccess.classList.remove('open');
+
+            leadModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            // Focus first field for accessibility
+            setTimeout(() => {
+                const firstField = document.getElementById('fullName');
+                if (firstField) firstField.focus();
+            }, 150);
+        }
+
+        function closeModal() {
+            leadModal.classList.remove('open');
+            document.body.style.overflow = '';
+            if (lastFocusedElement) lastFocusedElement.focus();
+        }
+
+        document.querySelectorAll('[data-open-modal]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                openModal(this.getAttribute('data-source'));
+            });
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modalDoneBtn.addEventListener('click', closeModal);
+
+        leadModal.addEventListener('click', function(e) {
+            if (e.target === leadModal) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && leadModal.classList.contains('open')) {
+                closeModal();
+            }
+            if (e.key === 'Escape' && infoModal.classList.contains('open')) {
+                closeInfoModal();
+            }
+        });
+
+        // Basic client-side validation
+        function showError(id, message) {
+            const el = document.getElementById('err-' + id);
+            if (el) el.textContent = message || '';
+        }
+
+        function validateForm(data) {
+            let valid = true;
+
+            if (!data.fullName.trim()) { showError('fullName', 'Please enter your name.'); valid = false; }
+            else showError('fullName', '');
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(data.email.trim())) { showError('email', 'Please enter a valid email.'); valid = false; }
+            else showError('email', '');
+
+            if (!data.designation.trim()) { showError('designation', 'Please enter your role.'); valid = false; }
+            else showError('designation', '');
+
+            if (!data.companyName.trim()) { showError('companyName', 'Please enter your company name.'); valid = false; }
+            else showError('companyName', '');
+
+            if (!data.orgSize) { showError('orgSize', 'Please select organization size.'); valid = false; }
+            else showError('orgSize', '');
+
+            if (!data.quantity) { showError('quantity', 'Please select a quantity range.'); valid = false; }
+            else showError('quantity', '');
+
+            if (!data.location.trim()) { showError('location', 'Please enter a location.'); valid = false; }
+            else showError('location', '');
+
+            if (!data.campaignDescription.trim()) { showError('campaignDescription', 'Please tell us about your campaign.'); valid = false; }
+            else showError('campaignDescription', '');
+
+            return valid;
+        }
+
+        leadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                designation: document.getElementById('designation').value,
+                companyName: document.getElementById('companyName').value,
+                orgSize: document.getElementById('orgSize').value,
+                quantity: document.getElementById('quantity').value,
+                location: document.getElementById('location').value,
+                phone: document.getElementById('phone').value,
+                campaignDescription: document.getElementById('campaignDescription').value
+            };
+
+            if (!validateForm(data)) return;
+
+            // Simulate submission — replace this block with a real API/fetch call
+            // to your backend or a service like Formspree / Google Sheets webhook.
+            modalSubmitBtn.disabled = true;
+            submitBtnText.textContent = 'Submitting...';
+
+            setTimeout(() => {
+                console.log('PureFlow lead captured:', data);
+
+                modalSubmitBtn.disabled = false;
+                submitBtnText.textContent = 'Submit Request';
+
+                modalBody.classList.add('hidden');
+                modalSuccess.classList.add('open');
+
+                leadForm.reset();
+            }, 700);
+        });
+
+        /* ===================== INFO MODAL (About / Blog / Press / Support / Community / Legal) ===================== */
+        const infoModal = document.getElementById('infoModal');
+        const infoModalClose = document.getElementById('infoModalClose');
+        const infoEyebrow = document.getElementById('infoEyebrow');
+        const infoTitle = document.getElementById('infoTitle');
+        const infoSubtitle = document.getElementById('infoSubtitle');
+        const infoBody = document.getElementById('infoBody');
+
+        let lastFocusedInfoElement = null;
+
+        const infoPages = {
+            about: {
+                eyebrow: 'Our Story',
+                title: 'About PureFlow',
+                subtitle: 'We turn the most-used object in daily life — a water bottle — into a trusted, measurable advertising channel for brands that want to be seen where thirst, attention, and repetition naturally meet.',
+                body: `
+                    <h3>Where It Started</h3>
+                    <p>PureFlow began with a simple observation: people carry a water bottle almost everywhere — to the gym, the office desk, the classroom, the daily commute — yet the surface of that bottle sat empty, unused, and completely wasted from a brand's point of view. Billboards get ignored. Banner ads get blocked. But a bottle in someone's hand gets looked at, picked up, and carried around for hours at a time. We set out to build the infrastructure that lets brands claim that space properly, at scale, and with real accountability.</p>
+                    <p>What started as a small pilot supplying custom-labelled bottles to a handful of corporate events has grown into a full-stack advertising platform spanning design, production, distribution, and analytics — all under one roof.</p>
+
+                    <h3>What We're Building Toward</h3>
+                    <p>Our mission is to become the leading marketing platform built around everyday hydration. We're not just printing labels on bottles; we're building a distribution network, a design studio, and a data layer that together let any brand — from a regional beverage company to a national retailer — launch a bottle-based campaign as easily as they'd launch a digital ad, and measure it with the same rigor.</p>
+                    <p>Over the next few years, our roadmap is focused on three things: expanding our distribution footprint into new retail and event channels, deepening our analytics so every campaign comes with real engagement data rather than guesswork, and making the QR-driven digital layer on each bottle a genuine two-way channel between brand and consumer — not just a label, but a first touchpoint in a longer relationship.</p>
+
+                    <div class="info-stat-row">
+                        <div class="info-stat-pill"><strong>10M+</strong><span>Bottles Distributed / Yr</span></div>
+                        <div class="info-stat-pill"><strong>500+</strong><span>Partner Brands</span></div>
+                        <div class="info-stat-pill"><strong>92%</strong><span>Brand Recall Rate</span></div>
+                    </div>
+
+                    <h3>How We Got Here</h3>
+                    <div class="info-timeline">
+                        <div class="info-timeline-item">
+                            <div class="info-timeline-year">Year 1</div>
+                            <div class="info-timeline-text"><strong>The First Bottles</strong><p>Launched with a small production run for corporate events and regional beverage partners, testing custom labels and distribution logistics.</p></div>
+                        </div>
+                        <div class="info-timeline-item">
+                            <div class="info-timeline-year">Year 2</div>
+                            <div class="info-timeline-text"><strong>Building the Platform</strong><p>Introduced the design studio, volume-based pricing, and our first analytics dashboard so partners could see real engagement, not just print runs.</p></div>
+                        </div>
+                        <div class="info-timeline-item">
+                            <div class="info-timeline-year">Year 3</div>
+                            <div class="info-timeline-text"><strong>Scaling Distribution</strong><p>Expanded into national retail shelves and added QR-driven digital campaigns, pushing annual distribution past 10 million bottles.</p></div>
+                        </div>
+                        <div class="info-timeline-item">
+                            <div class="info-timeline-year">What's Next</div>
+                            <div class="info-timeline-text"><strong>A True Marketing Platform</strong><p>Deeper analytics, smarter audience targeting, and an expanded partner network — turning every bottle into a fully trackable, two-way marketing touchpoint.</p></div>
+                        </div>
+                    </div>
+
+                    <h3>Our Principles</h3>
+                    <ul>
+                        <li><strong>Measurable over decorative.</strong> A label isn't a campaign until you can see how it performed.</li>
+                        <li><strong>Sustainable by default.</strong> Every bottle we produce uses recyclable PET and responsibly sourced materials.</li>
+                        <li><strong>Partnership, not vendor work.</strong> Every account gets a dedicated manager who treats your campaign like their own.</li>
+                    </ul>
+                `
+            },
+            blog: {
+                eyebrow: 'Insights & Ideas',
+                title: 'The PureFlow Blog',
+                subtitle: 'Notes on bottle advertising, campaign design, and what we\'re learning as we build a new kind of marketing platform.',
+                body: `
+                    <div class="blog-post-list">
+                        <div class="blog-post-item">
+                            <div class="blog-post-meta"><span>Marketing Strategy</span><span class="dot"></span><span class="blog-date">6 min read</span></div>
+                            <h4>Why the Object in Someone's Hand Beats the Ad on Their Screen</h4>
+                            <p>Digital ads are easy to scroll past. A bottle sitting on a desk for six hours a day isn't. We break down why physical, repeated-exposure media is quietly outperforming a lot of paid digital placement for brand recall — and where it fits alongside your existing media mix rather than replacing it.</p>
+                        </div>
+                        <div class="blog-post-item">
+                            <div class="blog-post-meta"><span>Design</span><span class="dot"></span><span class="blog-date">5 min read</span></div>
+                            <h4>Designing a Label That Works at Arm's Length</h4>
+                            <p>Most label design advice is built for shelf appeal at a distance. A bottle label lives at arm's length, gets picked up, turned around, and looked at closely. Our design studio walks through the typography, contrast, and QR-placement choices that actually hold up under that kind of close, repeated attention.</p>
+                        </div>
+                        <div class="blog-post-item">
+                            <div class="blog-post-meta"><span>Case Study</span><span class="dot"></span><span class="blog-date">7 min read</span></div>
+                            <h4>Turning a Product Launch Into 50,000 Daily Touchpoints</h4>
+                            <p>A regional beverage brand used a 50,000-bottle campaign tied to a product launch, with a QR code driving people to a limited-time offer. We walk through how the campaign was scoped, what the analytics dashboard showed week over week, and what we'd change next time.</p>
+                        </div>
+                        <div class="blog-post-item">
+                            <div class="blog-post-meta"><span>Sustainability</span><span class="dot"></span><span class="blog-date">4 min read</span></div>
+                            <h4>Advertising Doesn't Have to Mean More Waste</h4>
+                            <p>A look at how we choose PET packaging, why recyclability was a non-negotiable requirement from day one, and what we're doing to reduce the environmental footprint of every campaign we produce.</p>
+                        </div>
+                        <div class="blog-post-item">
+                            <div class="blog-post-meta"><span>Data & Analytics</span><span class="dot"></span><span class="blog-date">6 min read</span></div>
+                            <h4>What "Brand Recall" Actually Means When It's on a Bottle</h4>
+                            <p>Brand recall is thrown around loosely in advertising. Here's how we actually measure it for bottle campaigns — from QR scan-through rates to post-campaign recognition surveys — and why we think it's one of the more honest metrics in the industry.</p>
+                        </div>
+                    </div>
+                `
+            },
+            press: {
+                eyebrow: 'Newsroom',
+                title: 'Press & Media',
+                subtitle: 'Company news, media resources, and the people to contact for interviews, data, or brand assets.',
+                body: `
+                    <h3>Latest Releases</h3>
+                    <div class="press-release-item">
+                        <div class="press-release-date">Press Release</div>
+                        <h4>PureFlow Surpasses 10 Million Bottles Distributed in a Single Year</h4>
+                        <p>PureFlow announced it crossed 10 million bottles distributed annually across its retail and corporate event network, a milestone driven by growth in its regional beverage partnerships and expanded distribution into national retail chains.</p>
+                    </div>
+                    <div class="press-release-item">
+                        <div class="press-release-date">Press Release</div>
+                        <h4>PureFlow Launches Real-Time Campaign Analytics Dashboard</h4>
+                        <p>The new dashboard gives partner brands live visibility into QR code scans, regional performance, and estimated brand recall, replacing the quarterly reporting cycle previously used for mid-sized campaigns.</p>
+                    </div>
+                    <div class="press-release-item">
+                        <div class="press-release-date">Press Release</div>
+                        <h4>PureFlow Passes 500 Partner Brands</h4>
+                        <p>The company's partner roster has grown to more than 500 brands spanning beverage, retail, events, and corporate wellness programs, reflecting rising demand for measurable, physical-world advertising formats.</p>
+                    </div>
+
+                    <div class="info-divider"></div>
+
+                    <h3>Media Resources</h3>
+                    <p>Members of the press can request our brand kit, including logos, product photography, executive headshots, and campaign case study data, by reaching out through the media contact below.</p>
+
+                    <div class="info-contact-box">
+                        <strong>Media Contact</strong>
+                        <span>PureFlow Communications Team — available for interviews, data requests, and campaign walkthroughs. Reach us through the Contact section of this site and mention "Press Inquiry" in your message.</span>
+                    </div>
+                `
+            },
+            support: {
+                eyebrow: 'Help Center',
+                title: 'Support',
+                subtitle: 'Answers to the questions we hear most from brands running their first — or fiftieth — PureFlow campaign.',
+                body: `
+                    <div class="faq-list">
+                        <div class="faq-item open">
+                            <button type="button" class="faq-question">How long does a typical campaign take from sign-up to distribution?<span class="faq-icon">+</span></button>
+                            <div class="faq-answer"><p>Most campaigns move from approval to distribution in 4-6 weeks. Timing depends on order volume, whether your label design is ready or needs to be built with our studio, and your target distribution footprint. Your account manager will confirm an exact timeline once your quantity and design scope are locked in.</p></div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">What's the minimum order size?<span class="faq-icon">+</span></button>
+                            <div class="faq-answer"><p>Campaigns start at 1,000 bottles, which suits a single regional event or a small pilot run. There's no upper limit — our largest partners run continuous campaigns well past 1 million bottles a year.</p></div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">Do you handle label design, or do I need to supply my own?<span class="faq-icon">+</span></button>
+                            <div class="faq-answer"><p>Both are supported. You can submit print-ready artwork, or work with our in-house design team to build a label from scratch, including QR code integration and campaign-specific messaging.</p></div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">How do I track how my campaign is performing?<span class="faq-icon">+</span></button>
+                            <div class="faq-answer"><p>Every campaign includes access to our real-time analytics dashboard, showing QR scan volume, regional distribution data, and estimated brand recall. Your account manager can also provide a summary report at any milestone.</p></div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">Can I adjust volume or design mid-campaign?<span class="faq-icon">+</span></button>
+                            <div class="faq-answer"><p>Yes, within reason. Volume adjustments are easiest before a production run starts; design changes for future runs of an ongoing campaign can usually be accommodated with a short lead time. Speak to your account manager as soon as you know a change is needed.</p></div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">Who do I contact if I need help outside business hours?<span class="faq-icon">+</span></button>
+                            <div class="faq-answer"><p>Every partner is assigned a dedicated account manager as the primary point of contact. For anything urgent outside standard hours, use the priority contact details provided in your onboarding welcome pack.</p></div>
+                        </div>
+                    </div>
+                `
+            },
+            community: {
+                eyebrow: 'Together',
+                title: 'The PureFlow Community',
+                subtitle: 'A growing network of brands, designers, and distribution partners building the future of physical-world advertising together.',
+                body: `
+                    <p>PureFlow's community isn't just a marketing term — it's the actual network of over 500 partner brands, independent designers, retail distributors, and event organizers who make every campaign possible. We believe the best campaigns come from partners learning from each other, not working in isolation.</p>
+
+                    <div class="community-grid">
+                        <div class="community-card">
+                            <h4>Partner Brand Network</h4>
+                            <p>A space for partner brands to share campaign learnings, benchmark performance, and occasionally co-run larger regional distributions together.</p>
+                        </div>
+                        <div class="community-card">
+                            <h4>Design Collective</h4>
+                            <p>Independent designers and studios who collaborate with our in-house team on label concepts, QR integrations, and seasonal campaign templates.</p>
+                        </div>
+                        <div class="community-card">
+                            <h4>Distribution Partners</h4>
+                            <p>Retailers, event organizers, and logistics partners who make sure bottles reach the right shelves, venues, and hands on schedule.</p>
+                        </div>
+                        <div class="community-card">
+                            <h4>Sustainability Circle</h4>
+                            <p>A working group focused on reducing packaging waste, sourcing better materials, and sharing best practices across the network.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-divider"></div>
+
+                    <h3>Get Involved</h3>
+                    <p>If you're a designer, distributor, or brand interested in being part of this network beyond a single campaign, mention it when you reach out through our Contact section — we're always looking to grow these groups with people who care about doing this well.</p>
+                `
+            },
+            privacy: {
+                eyebrow: 'Legal',
+                title: 'Privacy Policy',
+                subtitle: 'How PureFlow collects, uses, and protects the information shared with us by partners and site visitors.',
+                body: `
+                    <h3>Information We Collect</h3>
+                    <p>When you submit a campaign request, request a demo, or otherwise contact us through this site, we collect the details you provide directly, such as your name, email address, company name, role, organization size, and campaign requirements. We do not collect payment information through this site.</p>
+
+                    <h3>How We Use Your Information</h3>
+                    <ul>
+                        <li>To respond to campaign inquiries and prepare custom quotes.</li>
+                        <li>To assign and coordinate with a dedicated account manager for your organization.</li>
+                        <li>To send campaign-related updates, such as production timelines and analytics summaries.</li>
+                        <li>To improve our services based on aggregated, anonymized usage patterns.</li>
+                    </ul>
+
+                    <h3>How We Protect Your Information</h3>
+                    <p>Submitted information is stored securely and access is limited to PureFlow team members directly involved in managing your account or campaign. We do not sell your personal information to third parties.</p>
+
+                    <h3>Third-Party Sharing</h3>
+                    <p>We may share limited information with production, printing, and distribution partners strictly as needed to fulfil your campaign — for example, providing a shipping address to a logistics partner. These partners are contractually required to handle your data responsibly and only for the purpose of completing your order.</p>
+
+                    <h3>Your Choices</h3>
+                    <p>You can request access to, correction of, or deletion of the information we hold about you at any time by contacting us through the Contact section of this site. We will respond to verified requests within a reasonable timeframe.</p>
+
+                    <h3>Updates to This Policy</h3>
+                    <p>We may update this policy from time to time as our services evolve. The most current version will always be available on this page.</p>
+                `
+            },
+            terms: {
+                eyebrow: 'Legal',
+                title: 'Terms of Service',
+                subtitle: 'The terms that govern your use of this site and your engagement of PureFlow\'s bottle advertising services.',
+                body: `
+                    <h3>Acceptance of Terms</h3>
+                    <p>By using this website or submitting a campaign inquiry, you agree to these terms. If you do not agree, please do not use the site or submit a request.</p>
+
+                    <h3>Our Services</h3>
+                    <p>PureFlow provides custom label design, production, and distribution of branded water bottles, along with campaign analytics tools, for partner brands. Specific deliverables, timelines, and pricing for each campaign are confirmed individually with your account manager and are not guaranteed by the general descriptions on this website.</p>
+
+                    <h3>Campaign Requests and Quotes</h3>
+                    <p>Submitting a form on this site constitutes an inquiry, not a binding order. A campaign is only confirmed once both parties have agreed on volume, design, pricing, and distribution scope in writing.</p>
+
+                    <h3>Intellectual Property</h3>
+                    <p>Any brand assets, logos, or artwork you provide remain your property. Label designs created by our in-house studio specifically for your campaign are licensed to you for use in connection with that campaign, unless otherwise agreed in writing.</p>
+
+                    <h3>Limitation of Liability</h3>
+                    <p>While we take care in production and distribution, PureFlow is not liable for indirect or incidental damages arising from delays, third-party distribution issues, or factors outside our reasonable control, except where required by applicable law.</p>
+
+                    <h3>Changes to These Terms</h3>
+                    <p>We may revise these terms periodically. Continued use of the site after changes are posted constitutes acceptance of the updated terms.</p>
+                `
+            },
+            cookies: {
+                eyebrow: 'Legal',
+                title: 'Cookie Policy',
+                subtitle: 'How this website uses cookies and similar technologies, and the choices available to you.',
+                body: `
+                    <h3>What Are Cookies</h3>
+                    <p>Cookies are small text files stored on your device that help websites remember information about your visit, such as preferences or session details.</p>
+
+                    <h3>How We Use Cookies</h3>
+                    <ul>
+                        <li><strong>Essential cookies:</strong> Required for core site functionality, such as keeping the campaign inquiry form working correctly across a session.</li>
+                        <li><strong>Performance cookies:</strong> Help us understand how visitors use the site, so we can improve navigation and content.</li>
+                        <li><strong>Preference cookies:</strong> Remember choices you've made on the site to make future visits smoother.</li>
+                    </ul>
+                    <p>We do not use cookies to sell your data to third-party advertisers.</p>
+
+                    <h3>Managing Cookies</h3>
+                    <p>Most browsers let you control or clear cookies through their settings. Disabling essential cookies may affect the functionality of forms and interactive features on this site.</p>
+
+                    <h3>Changes to This Policy</h3>
+                    <p>We may update this cookie policy as our use of these technologies evolves. Please check back periodically for the latest version.</p>
+                `
+            }
+        };
+
+        function openInfoModal(pageKey) {
+            const page = infoPages[pageKey];
+            if (!page) return;
+
+            lastFocusedInfoElement = document.activeElement;
+
+            infoEyebrow.textContent = page.eyebrow;
+            infoTitle.textContent = page.title;
+            infoSubtitle.textContent = page.subtitle;
+            infoBody.innerHTML = page.body;
+
+            infoModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            // Wire up FAQ accordion if this page has one (Support)
+            infoBody.querySelectorAll('.faq-question').forEach(q => {
+                q.addEventListener('click', function() {
+                    const item = this.closest('.faq-item');
+                    const wasOpen = item.classList.contains('open');
+                    infoBody.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                    if (!wasOpen) item.classList.add('open');
+                });
+            });
+
+            // Scroll the modal card back to top on open
+            const card = infoModal.querySelector('.info-modal-card');
+            if (card) card.scrollTop = 0;
+        }
+
+        function closeInfoModal() {
+            infoModal.classList.remove('open');
+            document.body.style.overflow = '';
+            if (lastFocusedInfoElement) lastFocusedInfoElement.focus();
+        }
+
+        document.querySelectorAll('[data-info-page]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                openInfoModal(this.getAttribute('data-info-page'));
+            });
+        });
+
+        infoModalClose.addEventListener('click', closeInfoModal);
+
+        infoModal.addEventListener('click', function(e) {
+            if (e.target === infoModal) closeInfoModal();
+        });
+    </script>
+</body>
+</html>
