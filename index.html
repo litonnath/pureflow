@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PureFlow - Premium Bottle Advertising Platform</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         * {
             margin: 0;
@@ -2108,6 +2109,7 @@
 
     <!-- ===================== LEAD FORM MODAL ===================== -->
     <div class="modal-overlay" id="leadModal">
+
         <div class="modal-card">
             <button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>
 
@@ -2121,6 +2123,7 @@
 
             <div class="modal-body" id="modalBody">
                 <form id="leadForm" novalidate>
+                    <input type="hidden" id="campaign" value="Website">
                     <div class="form-grid">
                         <div class="form-field">
                             <label for="fullName">Full Name <span class="req">*</span></label>
@@ -2227,6 +2230,15 @@
     </div>
 
     <script>
+
+const SUPABASE_URL = "https://ltuenfptmlwlajkcnlap.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0dWVuZnB0bWx3bGFqa2NubGFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzOTM5NDAsImV4cCI6MjA5OTk2OTk0MH0.3f5xwW4GjFtlyIBfLp3IE90vZngPxdJd3aJcJJf5pLc";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
+
         // Nav and footer items are plain buttons (no href), so clicks are
         // handled entirely in JS with scrollIntoView. This avoids the
         // preview sandbox's link-interception behavior that opens <a href>
@@ -2455,41 +2467,75 @@
 
             return valid;
         }
+function validateForm(data) {
+    let valid = true;
 
-        leadForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    if (!data.full_name.trim()) { showError('fullName', 'Please enter your name.'); valid = false; }
+    else showError('fullName', '');
 
-            const data = {
-                fullName: document.getElementById('fullName').value,
-                email: document.getElementById('email').value,
-                designation: document.getElementById('designation').value,
-                companyName: document.getElementById('companyName').value,
-                orgSize: document.getElementById('orgSize').value,
-                quantity: document.getElementById('quantity').value,
-                location: document.getElementById('location').value,
-                phone: document.getElementById('phone').value,
-                campaignDescription: document.getElementById('campaignDescription').value
-            };
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(data.email.trim())) { showError('email', 'Please enter a valid email.'); valid = false; }
+    else showError('email', '');
 
-            if (!validateForm(data)) return;
+    if (!data.designation.trim()) { showError('designation', 'Please enter your role.'); valid = false; }
+    else showError('designation', '');
 
-            // Simulate submission — replace this block with a real API/fetch call
-            // to your backend or a service like Formspree / Google Sheets webhook.
-            modalSubmitBtn.disabled = true;
-            submitBtnText.textContent = 'Submitting...';
+    if (!data.company.trim()) { showError('companyName', 'Please enter your company name.'); valid = false; }
+    else showError('companyName', '');
 
-            setTimeout(() => {
-                console.log('PureFlow lead captured:', data);
+    if (!data.organization_size) { showError('orgSize', 'Please select organization size.'); valid = false; }
+    else showError('orgSize', '');
 
-                modalSubmitBtn.disabled = false;
-                submitBtnText.textContent = 'Submit Request';
+    if (!data.bottle_quantity) { showError('quantity', 'Please select a quantity range.'); valid = false; }
+    else showError('quantity', '');
 
-                modalBody.classList.add('hidden');
-                modalSuccess.classList.add('open');
+    if (!data.location.trim()) { showError('location', 'Please enter a location.'); valid = false; }
+    else showError('location', '');
 
-                leadForm.reset();
-            }, 700);
-        });
+    if (!data.campaign_description.trim()) { showError('campaignDescription', 'Please tell us about your campaign.'); valid = false; }
+    else showError('campaignDescription', '');
+
+    return valid;
+}
+       leadForm.addEventListener("submit", async function (e) {
+
+    e.preventDefault();
+
+    const data = {
+        full_name: document.getElementById("fullName").value,
+        email: document.getElementById("email").value,
+        designation: document.getElementById("designation").value,
+        company: document.getElementById("companyName").value,
+        organization_size: document.getElementById("orgSize").value,
+        bottle_quantity: document.getElementById("quantity").value,
+        location: document.getElementById("location").value,
+        phone: document.getElementById("phone").value,
+        campaign_description: document.getElementById("campaignDescription").value,
+        campaign: document.getElementById("campaign").value
+    };
+
+    if (!validateForm(data)) return;
+
+    modalSubmitBtn.disabled = true;
+    submitBtnText.textContent = "Submitting...";
+
+    const { error } = await supabaseClient
+        .from("lead")
+        .insert([data]);
+
+    modalSubmitBtn.disabled = false;
+    submitBtnText.textContent = "Submit Request";
+
+    if (error) {
+        alert("Error: " + error.message);
+        return;
+    }
+
+    modalBody.classList.add("hidden");
+    modalSuccess.classList.add("open");
+
+    leadForm.reset();
+});
 
         /* ===================== INFO MODAL (About / Blog / Press / Support / Community / Legal) ===================== */
         const infoModal = document.getElementById('infoModal');
@@ -2806,5 +2852,6 @@
             if (e.target === infoModal) closeInfoModal();
         });
     </script>
+
 </body>
 </html>
