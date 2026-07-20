@@ -260,6 +260,27 @@
             transform: translate(-50%, -50%) scale(1.08);
             box-shadow: 0 20px 40px rgba(31, 41, 135, 0.34);
         }
+        .tagline{
+    font-size:1.1rem;
+    font-weight:500;
+    color:#5f6b7a;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    position:relative;
+    padding-top:10px;
+}
+
+.tagline::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:70px;
+    height:3px;
+    border-radius:10px;
+    background:linear-gradient(90deg,#0B6BFF,#4FC3F7);
+}
 
         .hero-play-btn svg {
             width: 26px;
@@ -1799,6 +1820,7 @@
         <div class="logo-section">
             <div class="logo">💧</div>
             <div class="brand-name">PureFlow</div>
+            <div class="tagline">Reach Consumers Through Bottled Water</div>
         </div>
         <nav>
             <button type="button" class="nav-link" data-target="how">How It Works</button>
