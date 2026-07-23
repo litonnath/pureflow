@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AcquaReach - Premium Bottle Advertising Platform</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -45,8 +48,8 @@
             gap: 12px;
         }
 .logo {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,12 +61,15 @@
     height: 100%;
     object-fit: contain;
 }
-        .brand-name {
-            font-size: 22px;
-            font-weight: 700;
-            color: #1f2987;
-            letter-spacing: -0.5px;
-        }
+
+.brand-name {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2987;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 
         nav {
             display: flex;
