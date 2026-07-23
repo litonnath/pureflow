@@ -1410,6 +1410,143 @@
             }
         }
 
+        /* OUR BRANDS */
+.our-brands {
+    padding: 100px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.brands-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.brand-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #4a7dc4;
+    background: #f5f8ff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+}
+
+.brand-name-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    line-height: 1.15;
+}
+
+.brand-tagline {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1f2987;
+    margin-bottom: 22px;
+    font-style: italic;
+}
+
+.brand-description {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.85;
+    margin-bottom: 28px;
+}
+
+.brand-features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 34px;
+}
+
+.brand-features-list li {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-features-list li::before {
+    content: '✓';
+    color: #1f2987;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.brand-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.brand-image-card {
+    position: relative;
+    background: linear-gradient(160deg, #eef1f7 0%, #dbe2ee 100%);
+    border-radius: 16px;
+    padding: 30px 20px 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    box-shadow: 0 20px 50px rgba(31, 41, 135, 0.1);
+}
+
+.brand-image-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.12));
+}
+
+.brand-image-label {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1f2987;
+    background: white;
+    padding: 5px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(31, 41, 135, 0.12);
+}
+
+@ (max-width: 1024px) {
+    .brands-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .brand-images {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}
+
+@ (max-width: 768px) {
+    .brand-images {
+        grid-template-columns: 1fr;
+    }
+    .brand-image-card {
+        min-height: 320px;
+    }
+}
+
         /* ===================== INFO MODAL (About/Blog/Press/Support/etc) ===================== */
         .info-modal-card {
             background: #ffffff;
@@ -1826,6 +1963,7 @@
             <button type="button" class="nav-link" data-target="how">How It Works</button>
             <button type="button" class="nav-link" data-target="benefits">Benefits</button>
             <button type="button" class="nav-link" data-target="pricing">Pricing</button>
+            <button type="button" class="nav-link" data-target="brands">Our Brands</button>
             <button type="button" class="nav-link" data-target="contact">Contact</button>
             <button type="button" class="cta-btn" data-open-modal data-source="Get Started">Get Started</button>
         </nav>
@@ -2111,7 +2249,41 @@
             </div>
         </div>
     </section>
+<!-- OUR BRANDS -->
+<section class="our-brands" id="brands">
+    <div class="brands-content">
+        <div class="brand-info">
+            <span class="brand-eyebrow">Featured Brand</span>
+            <h2 class="brand-name-title">Parvata Natural Spring Water</h2>
+            <p class="brand-tagline">A Premium Water for Premium People</p>
+            <p class="brand-description">
+                Sourced from pristine mountain springs, Parvata is crafted for those who
+                expect nothing less than exceptional in every sip. Every bottle carries
+                the promise of purity, elegance, and a taste that sets it apart from
+                the everyday — making it the natural choice for brands and consumers
+                who value premium quality.
+            </p>
+            <ul class="brand-features-list">
+                <li>100% Natural Spring Source</li>
+                <li>Premium Bottle Design & Finish</li>
+                <li>Elegant, Minimalist Labeling</li>
+                <li>Available Across Retail & Events</li>
+            </ul>
+            <button class="btn-primary" data-open-modal data-source="Partner With Us">Partner With Parvata</button>
+        </div>
 
+        <div class="brand-images">
+            <div class="brand-image-card">
+                <img src="parvata-front.png" alt="Parvata Water Bottle - Front View">
+                <span class="brand-image-label">Front</span>
+            </div>
+            <div class="brand-image-card">
+                <img src="parvata-back.png" alt="Parvata Water Bottle - Back View">
+                <span class="brand-image-label">Back</span>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- CTA -->
     <section class="cta-section" id="contact">
         <div class="cta-section-content">
