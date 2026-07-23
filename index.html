@@ -254,6 +254,147 @@
             padding: 40px;
         }
 
+        .brand-reach {
+    margin-top: 90px;
+    padding-top: 70px;
+    border-top: 1px solid rgba(31, 41, 135, 0.1);
+}
+
+.brand-reach-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 50px;
+}
+
+.brand-reach-intro h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 14px;
+    letter-spacing: -0.3px;
+}
+
+.brand-reach-intro p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.8;
+}
+
+.brand-reach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.reach-step {
+    background: #fafbfd;
+    border: 1px solid rgba(31, 41, 135, 0.08);
+    border-radius: 14px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.reach-step:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(31, 41, 135, 0.12);
+    border-color: rgba(31, 41, 135, 0.2);
+}
+
+.reach-step-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 18px;
+    background: linear-gradient(135deg, #1f2987 0%, #4a7dc4 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 22px rgba(31, 41, 135, 0.2);
+}
+
+.reach-step-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.reach-step h4 {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.reach-step p {
+    font-size: 13.5px;
+    color: #666;
+    line-height: 1.7;
+}
+
+.brand-reach-cta {
+    background: linear-gradient(135deg, #1f2987 0%, #2d3e9e 55%, #4a7dc4 100%);
+    border-radius: 18px;
+    padding: 48px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    box-shadow: 0 30px 60px rgba(31, 41, 135, 0.2);
+}
+
+.brand-reach-cta-text h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.brand-reach-cta-text p {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.75;
+    max-width: 520px;
+}
+
+.brand-reach-cta .btn-primary {
+    background: white;
+    color: #1f2987;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.brand-reach-cta .btn-primary:hover {
+    background: #f5f8ff;
+}
+
+@ (max-width: 1024px) {
+    .brand-reach-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .brand-reach-cta {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 30px;
+    }
+    .brand-reach-cta-text p {
+        max-width: 100%;
+    }
+}
+
+@ (max-width: 640px) {
+    .brand-reach-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
         .hero-play-btn {
             position: absolute;
             top: 50%;
@@ -2107,7 +2248,91 @@
             <div class="stat-label">Brand Recall Rate</div>
         </div>
     </section>
+<!-- OUR BRANDS -->
+<section class="our-brands" id="brands">
+    <div class="brands-content">
+        <div class="brand-info">
+            <span class="brand-eyebrow">Featured Brand</span>
+            <h2 class="brand-name-title">Parvata Natural Spring Water</h2>
+            <p class="brand-tagline">A Premium Water for Premium People</p>
+            <p class="brand-description">
+                Sourced from pristine mountain springs, Parvata is crafted for those who
+                expect nothing less than exceptional in every sip. Every bottle carries
+                the promise of purity, elegance, and a taste that sets it apart from
+                the everyday — making it the natural choice for brands and consumers
+                who value premium quality.
+            </p>
+            <ul class="brand-features-list">
+                <li>100% Natural Spring Source</li>
+                <li>Premium Bottle Design & Finish</li>
+                <li>Elegant, Minimalist Labeling</li>
+                <li>Available Across Retail & Events</li>
+            </ul>
+            <button class="btn-primary" data-open-modal data-source="Partner With Us">Partner With Parvata</button>
+        </div>
 
+        <div class="brand-images">
+            <div class="brand-image-card">
+                <img src="parvata-front.png" alt="Parvata Water Bottle - Front View">
+                <span class="brand-image-label">Front</span>
+            </div>
+            <div class="brand-image-card">
+                <img src="parvata-back.png" alt="Parvata Water Bottle - Back View">
+                <span class="brand-image-label">Back</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="brand-reach">
+        <div class="brand-reach-intro">
+            <h3>How Parvata Reaches Customers</h3>
+            <p>Every Parvata bottle travels through multiple everyday touchpoints — turning a simple sip of water into repeated, natural brand exposure.</p>
+        </div>
+
+        <div class="brand-reach-grid">
+            <div class="reach-step">
+                <div class="reach-step-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-6 9 6"/><path d="M4 10v10h16V10"/><path d="M9 20v-6h6v6"/></svg>
+                </div>
+                <h4>Retail Shelves</h4>
+                <p>Placed in premium supermarkets and stores where quality-conscious shoppers browse.</p>
+            </div>
+
+            <div class="reach-step">
+                <div class="reach-step-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg>
+                </div>
+                <h4>Corporate Offices</h4>
+                <p>Stocked in meeting rooms and pantries, seen daily by decision-makers and teams.</p>
+            </div>
+
+            <div class="reach-step">
+                <div class="reach-step-icon">
+                    <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                </div>
+                <h4>Events & Conferences</h4>
+                <p>Handed out at conferences, weddings, and sports events for direct, hand-to-hand reach.</p>
+            </div>
+
+            <div class="reach-step">
+                <div class="reach-step-icon">
+                    <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 18h6"/></svg>
+                </div>
+                <h4>QR-Driven Engagement</h4>
+                <p>Each label scans to a digital experience — turning a bottle into a two-way conversation.</p>
+            </div>
+        </div>
+
+        <div class="brand-reach-cta">
+            <div class="brand-reach-cta-text">
+                <h3>This Could Be Your Brand's Story</h3>
+                <p>Just like Parvata, your brand can use every bottle as a moving billboard — reaching consumers through retail, corporate spaces, events, and campaigns, with real analytics behind every scan.</p>
+            </div>
+            <button class="btn-primary" data-open-modal data-source="Partner With Us">Start Your Campaign</button>
+        </div>
+    </div>
+
+</section>
     <!-- HOW IT WORKS -->
     <section class="how-it-works" id="how">
         <h2 class="section-title">How It Works</h2>
@@ -2249,41 +2474,7 @@
             </div>
         </div>
     </section>
-<!-- OUR BRANDS -->
-<section class="our-brands" id="brands">
-    <div class="brands-content">
-        <div class="brand-info">
-            <span class="brand-eyebrow">Featured Brand</span>
-            <h2 class="brand-name-title">Parvata Natural Spring Water</h2>
-            <p class="brand-tagline">A Premium Water for Premium People</p>
-            <p class="brand-description">
-                Sourced from pristine mountain springs, Parvata is crafted for those who
-                expect nothing less than exceptional in every sip. Every bottle carries
-                the promise of purity, elegance, and a taste that sets it apart from
-                the everyday — making it the natural choice for brands and consumers
-                who value premium quality.
-            </p>
-            <ul class="brand-features-list">
-                <li>100% Natural Spring Source</li>
-                <li>Premium Bottle Design & Finish</li>
-                <li>Elegant, Minimalist Labeling</li>
-                <li>Available Across Retail & Events</li>
-            </ul>
-            <button class="btn-primary" data-open-modal data-source="Partner With Us">Partner With Parvata</button>
-        </div>
 
-        <div class="brand-images">
-            <div class="brand-image-card">
-                <img src="parvata-front.png" alt="Parvata Water Bottle - Front View">
-                <span class="brand-image-label">Front</span>
-            </div>
-            <div class="brand-image-card">
-                <img src="parvata-back.png" alt="Parvata Water Bottle - Back View">
-                <span class="brand-image-label">Back</span>
-            </div>
-        </div>
-    </div>
-</section>
     <!-- CTA -->
     <section class="cta-section" id="contact">
         <div class="cta-section-content">
